@@ -10,7 +10,7 @@ To get this repo running:
 
 * Install Python 3.  You can find instructions [here](https://wiki.python.org/moin/BeginnersGuide/Download).
 * Create a virtual environment with the command: `python -m venv venv`.
-    Activate your virtual environment: `source venv/bin/activate`
+    - Activate your virtual environment: `source venv/bin/activate`
 * Clone this repo with `git clone git@github.com:dataquestio/analytics_pipeline.git`
 * Save the input file as `city_temperature.csv` inside the `Assessment_01` folder.
 * Get into the folder with `cd Assessment_01`
