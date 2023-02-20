@@ -9,3 +9,6 @@ bin/
 
 # notebooks
 *.ipynb
+
+# cache
+__pycache__
