@@ -7,3 +7,5 @@ venv/
 ENV/
 bin/
 
+# notebooks
+*.ipynb
