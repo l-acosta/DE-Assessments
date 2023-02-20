@@ -1,3 +1,6 @@
+import sys
+
+sys.path.insert(0, ".")
 from multiply_add import multiply_add
 
 
