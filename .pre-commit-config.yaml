@@ -9,4 +9,4 @@ repos:
   hooks:
   - id: flake8
     args:
-    - --ignore=E501
+    - --ignore=E501,E402
