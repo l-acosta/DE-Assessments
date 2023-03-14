@@ -30,7 +30,11 @@ def compute_avg_temp_month(df: pd.DataFrame) -> pd.DataFrame:
     """
     group_by_col = ["Region", "Country", "Month", "Year"]
     num_col = ["AvgTemperature"]
-    return df.groupby(group_by_col).mean().reset_index()[group_by_col + num_col]
+    return (
+        df.groupby(group_by_col)
+        .mean(numeric_only=True)
+        .reset_index()[group_by_col + num_col]
+    )
 
 
 def compute_diff_vs_last_year(df: pd.DataFrame) -> pd.DataFrame:
@@ -55,13 +59,12 @@ def compute_diff_vs_last_year(df: pd.DataFrame) -> pd.DataFrame:
     # Merge the current year DataFrame with the previous year DataFrame on the join columns, and compute the difference
     # in average temperature between the two years.
     df_vs_last_year = df.merge(
-        df_last_year, how="inner", on=join_col, suffixes=("_actual", "_prev")
+        df_last_year, how="inner", on=join_col, suffixes=("", "_prev")
     )
     df_vs_last_year[diff_col] = (
-        df_vs_last_year["AvgTemperature_actual"]
-        - df_vs_last_year["AvgTemperature_prev"]
+        df_vs_last_year["AvgTemperature"] - df_vs_last_year["AvgTemperature_prev"]
     )
-    return df_vs_last_year[join_col + [diff_col]]
+    return df_vs_last_year[join_col + ["AvgTemperature"] + [diff_col]]
 
 
 def transformation(df: pd.DataFrame) -> pd.DataFrame:
@@ -84,4 +87,12 @@ def transformation(df: pd.DataFrame) -> pd.DataFrame:
     df["date"] = df.apply(
         lambda row: date(year=row["Year"], month=row["Month"], day=1), axis=1
     )
-    return df[["date", "Region", "Country", "diff_AvgTemperature_vs_last_year"]]
+    return df[
+        [
+            "date",
+            "Region",
+            "Country",
+            "AvgTemperature",
+            "diff_AvgTemperature_vs_last_year",
+        ]
+    ]
