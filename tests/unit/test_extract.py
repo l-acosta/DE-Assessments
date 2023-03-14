@@ -19,6 +19,8 @@ def test_extract_path_not_exist():
 
     assert str(e.value) == f"The data path '{path}' does not exist"
 
+    assert str(e.value) == f"The data path '{path}' does not exist"
+
 
 def test_extract_empty_dataframe():
     """
@@ -30,6 +32,8 @@ def test_extract_empty_dataframe():
     # Test that an error is raised when attempting to extract data from the path
     with pytest.raises(ValueError) as e:
         extract(path=path)
+
+    assert str(e.value) == f"Dataframe at '{path}' is empty"
 
     assert str(e.value) == f"Dataframe at '{path}' is empty"
 
