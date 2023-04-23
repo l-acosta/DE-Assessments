@@ -59,7 +59,7 @@ def main():
     logger.info("Starting load step")
     ret, output_path = load(df=data_transform, path_to_write=filename_output)
     logger.info("DONE: load done")
-    logger.info(f"FINISHED: Output data path is {output_path}")
+    logger.info(f"FINISHED: Output data path is '{output_path}'")
 
 
 if __name__ == "__main__":
