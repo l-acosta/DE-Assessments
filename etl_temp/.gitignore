@@ -1,0 +1,19 @@
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+bin/
+
+# python garbase
+*.pyc
+
+# airflow stuffa
+airflow/logs
+airflow/airflow.db
+airflow/standalone_admin_password.txt
+
+# data output
+data/output/
