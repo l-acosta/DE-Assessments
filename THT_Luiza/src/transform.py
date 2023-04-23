@@ -249,7 +249,11 @@ def transformation(
 
         count_events = count_polling_events(df=merged_df_filtered, time_ref=ref)
 
-        df_counts = pd.merge(df_counts, count_events, on="order_id")
+        df_counts = pd.merge(
+            df_counts, count_events, how="left", left_on="order_id", right_on="order_id"
+        )
+
+    df_counts.iloc[:, 1:] = df_counts.iloc[:, 1:].fillna(0).astype(int)
 
     # Merge final information
     df_output = pd.merge(df_stg_phase2, df_counts, on="order_id")
