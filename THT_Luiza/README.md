@@ -32,7 +32,7 @@ To get this project running:
 # Usage
 
 1. To run the application, execute `python events_processing.py` in your terminal.
-2. When it finishes, the `events_report` file will be saved in the folder `data/output`.
+2. When the execution finishes, the `events_report` file will be saved in the folder `data/output`.
 
 ## Assumptions
 These are assumptions made based on data found in provided dataset:
