@@ -91,7 +91,7 @@ def find_connectivity_status(
             - status_time
             - previous_status
     """
-    # Merge dataframes to find preceding polling event
+    # Merge dataframes to find previous status
     df_connect_status = pd.merge_asof(
         orders.sort_values("order_creation_time"),
         conn_status.sort_values("creation_time"),
@@ -223,7 +223,7 @@ def transformation(
     # Merge original orders base with pooling events to perform the counts
     df_merged = pd.merge(df_base, df_polling, on="device_id")
 
-    # Define time periods and compute the counts
+    # Define time periods and compute the counts on the data filtered by time
     time_period = [-3, 3, -60]
     df_counts = df_base[["order_id"]]
 
